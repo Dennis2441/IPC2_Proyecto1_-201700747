@@ -435,6 +435,7 @@ def grafi():
 
 def ordernar():
     comparar = 1
+    comp=0
     print()
 
 
