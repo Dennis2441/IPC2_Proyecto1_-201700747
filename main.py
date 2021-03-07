@@ -12,12 +12,22 @@ class matriz():
 
 
 class datomatriz():
-    def __init__(self, nombre, x, y, dato, n, m):
+    def __init__(self, nombre, x, y, dato, n, m, binario):
         self.nombre = nombre
         self.x = x
         self.y = y
         self.n = n
         self.m = m
+        self.binario = binario
+        self.dato = dato
+
+
+class datofinal():
+    def __init__(self, nombre, x, y, dato, binario):
+        self.nombre = nombre
+        self.x = x
+        self.y = y
+        self.binario = binario
         self.dato = dato
 
 
@@ -151,6 +161,7 @@ def leerarchivo(document):
     nm = 1
     nd = 0
     jk = 0
+    bi = 0
     encontrado = False
     mat = ""
     doc = xml.dom.minidom.parseString(document)
@@ -184,9 +195,15 @@ def leerarchivo(document):
                     y = da.getAttribute("y")
                     xx = int(x)
                     yy = int(y)
+                    comp = int(da.firstChild.data)
+
+                    if (comp == 0):
+                        bi = 0
+                    else:
+                        bi = 1
                     if (xx <= nn):
                         if (yy <= mm):
-                            lista_temporal.append(datomatriz(nombre, x, y, da.firstChild.data, n, m))
+                            lista_temporal.append(datomatriz(nombre, x, y, da.firstChild.data, n, m, str(bi)))
                             print(nombre, x, y, da.firstChild.data)
 
 
@@ -239,9 +256,14 @@ def leerarchivo(document):
                         y = da.getAttribute("y")
                         xx = int(x)
                         yy = int(y)
+                        comp = int(da.firstChild.data)
+                        if (comp == 0):
+                            bi = 0
+                        else:
+                            bi = 1
                         if (xx <= nn):
                             if (yy <= mm):
-                                lista_temporal.append(datomatriz(nombre, x, y, da.firstChild.data, n, m))
+                                lista_temporal.append(datomatriz(nombre, x, y, da.firstChild.data, n, m, str(bi)))
                                 print(nombre, x, y, da.firstChild.data)
 
 
@@ -294,6 +316,7 @@ def grafi():
     pp = 1
     nf = ""
     nc = ""
+    jk = ""
     if (dimen == None):
         print("Haga la carga")
     else:
@@ -317,6 +340,7 @@ def grafi():
                     for gra in lista_dato:
                         pox = int(gra.x)
                         poy = int(gra.y)
+                        jk = gra.binario
                         if (gra.nombre == nombre):
                             if (estado == 0):
                                 MapaRuta = open(r"C:\Users\denni\OneDrive\Desktop\matriz" + str(lis1) + ".txt", 'w')
@@ -339,7 +363,7 @@ def grafi():
                                         break
                                 print()
                             elif (estado == 1):
-                                print(str(pox), str(poy) + " k")
+                                print(str(pox), str(poy) + " b" + gra.dato + " o" + jk)
                                 if (gra.nombre == nombre):
                                     if (poy == y and x == 1):
                                         MapaRuta.write(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
@@ -408,8 +432,12 @@ def grafi():
         except:
             main()
 
-def procesar():
+
+def ordernar():
+    comparar = 0
     print()
+
+
 def main():
     opcion = 0
     while (opcion != 7):
