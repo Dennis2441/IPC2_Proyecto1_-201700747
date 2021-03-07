@@ -408,7 +408,8 @@ def grafi():
         except:
             main()
 
-
+def procesar():
+    print()
 def main():
     opcion = 0
     while (opcion != 7):
