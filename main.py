@@ -339,7 +339,7 @@ def grafi():
                                         break
                                 print()
                             elif (estado == 1):
-                                print()
+                                print(str(pox), str(poy) + " k")
                                 if (gra.nombre == nombre):
                                     if (poy == y and x == 1):
                                         MapaRuta.write(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
@@ -356,7 +356,7 @@ def grafi():
                                         if (x == fi):
                                             if (y == co):
                                                 MapaRuta.write(
-                                                    quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
+                                                    quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
                                                 MapaRuta.write(
                                                     quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
                                                 MapaRuta.write('}')
@@ -370,7 +370,7 @@ def grafi():
                                                 break
                                             else:
                                                 MapaRuta.write(
-                                                    quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
+                                                    quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
                                                 print(quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
                                                 MapaRuta.write(
                                                     quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
@@ -384,7 +384,7 @@ def grafi():
                                                 anterior = gra.dato
                                                 break
                                         elif (pox == x):
-                                            MapaRuta.write(quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
+                                            MapaRuta.write(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
                                             print(quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
                                             MapaRuta.write(
                                                 quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
@@ -431,11 +431,14 @@ def main():
 
         if opcion == 1:  # CARGAR ARCHIVO
             mm = ""
-            ruta = input("Ingrese Ruta:")
-            archivo = open(ruta, "r", encoding='utf-8')  # Leer
-            print(archivo)
-            mm = archivo.read()
-            leerarchivo(mm)
+            try:
+                ruta = input("Ingrese Ruta:")
+                archivo = open(ruta, "r", encoding='utf-8')  # Leer
+                print(archivo)
+                mm = archivo.read()
+                leerarchivo(mm)
+            except:
+                print("Ruta no valida")
 
 
         elif opcion == 2:  # GRAFICAR ARCHIVO   <
