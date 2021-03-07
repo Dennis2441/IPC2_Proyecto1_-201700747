@@ -326,32 +326,35 @@ def grafi():
                                 MapaRuta.write(quotes + nombre + quotes + "->" + quotes + nc + quotes + "\n")
                                 estado = 1
                                 if (gra.nombre == nombre):
-                                    if (pox == x and y == 1):
-                                        print(quotes + str(p) + quotes + "[label=" + gra.dato + "]")
+                                    if (poy == y and x == 1):
                                         MapaRuta.write(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
+                                        print(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
                                         MapaRuta.write(
                                             quotes + nombre + quotes + "->" + quotes + str(p) + quotes + "\n")
+                                        print(quotes + nombre + quotes + "->" + quotes + str(p) + quotes + "\n")
                                         anterior = gra.dato
                                         pp = p
                                         p = p + 1
-                                        y = y + 1
+                                        x = x + 1
                                         break
                                 print()
                             elif (estado == 1):
                                 print()
                                 if (gra.nombre == nombre):
-                                    if (pox == x and y == 1):
+                                    if (poy == y and x == 1):
                                         MapaRuta.write(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
+                                        print(quotes + str(p) + quotes + "[label=" + gra.dato + "]" + "\n")
                                         MapaRuta.write(
                                             quotes + nombre + quotes + "->" + quotes + str(p) + quotes + "\n")
+                                        print(quotes + nombre + quotes + "->" + quotes + str(p) + quotes + "\n")
                                         anterior = gra.dato
                                         pp = p
                                         p = p + 1
-                                        y = y + 1
+                                        x = x + 1
                                         break
-                                    if (pox == x):
-                                        if (y == co):
-                                            if (x == fi):
+                                    if (poy == y):
+                                        if (x == fi):
+                                            if (y == co):
                                                 MapaRuta.write(
                                                     quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
                                                 MapaRuta.write(
@@ -362,29 +365,34 @@ def grafi():
                                                     lis1) + ".txt -o "r"C:\Users\denni\OneDrive\Desktop\matriz" + str(
                                                     lis1) + ".svg")
                                                 print("Grafica Completa")
-                                                x = x + 1
+                                                y = y + 1
                                                 st = False
                                                 break
                                             else:
                                                 MapaRuta.write(
                                                     quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
+                                                print(quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
                                                 MapaRuta.write(
+                                                    quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
+                                                print(
                                                     quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
                                                 anterior = gra.dato
                                                 pp = p
                                                 p = p + 1
-                                                y = 1
-                                                x = x + 1
+                                                x = 1
+                                                y = y + 1
                                                 anterior = gra.dato
                                                 break
-                                        elif (poy == y):
+                                        elif (pox == x):
                                             MapaRuta.write(quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
+                                            print(quotes + str(p) + quotes + "[label=" + anterior + "]" + "\n")
                                             MapaRuta.write(
                                                 quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
+                                            print(quotes + str(pp) + quotes + "->" + quotes + str(p) + quotes + "\n")
                                             anterior = gra.dato
                                             pp = p
                                             p = p + 1
-                                            y = y + 1
+                                            x = x + 1
                                             anterior = gra.dato
                                             break
 
@@ -400,8 +408,7 @@ def grafi():
         except:
             main()
 
-def procesar():
-    print()
+
 def main():
     opcion = 0
     while (opcion != 7):
