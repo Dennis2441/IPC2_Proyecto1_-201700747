@@ -345,6 +345,8 @@ def grafi():
                             if (estado == 0):
                                 MapaRuta = open(r"C:\Users\denni\OneDrive\Desktop\matriz" + str(lis1) + ".txt", 'w')
                                 MapaRuta.write('digraph {' + "\n")
+                                MapaRuta.write( quotes + nf + quotes + "[shape=doublecircle,color=blue ]" + "\n" )
+                                MapaRuta.write(quotes + nc + quotes + "[shape=doublecircle,color=blue ]" + "\n")
                                 MapaRuta.write(("matrices->" + quotes + nombre + quotes + "\n"))
                                 MapaRuta.write(quotes + nombre + quotes + "->" + quotes + nf + quotes + "\n")
                                 MapaRuta.write(quotes + nombre + quotes + "->" + quotes + nc + quotes + "\n")
